@@ -516,6 +516,19 @@ Vivus.prototype.mapping = function () {
       }
       continue;
     }
+
+    // EDITED CODE
+
+    var scaledW  = path.getBoundingClientRect().width;
+    var initialW = path.getBBox().width;
+
+    var scaledH  = path.getBoundingClientRect().height;
+    var initialH = path.getBBox().height;
+
+    pathObj.length = pathObj.length + pathObj.length * ( scaledW/initialW * 0.7 ) + pathObj.length * ( scaledH/initialH * 0.2 );
+
+    // END EDITED CODE
+
     totalLength += pathObj.length;
     this.map.push(pathObj);
     path.style.strokeDasharray  = pathObj.length + ' ' + (pathObj.length + this.dashGap);
